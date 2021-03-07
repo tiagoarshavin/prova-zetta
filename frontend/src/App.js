@@ -6,6 +6,7 @@ import Title from 'antd/lib/typography/Title';
 
 import Cargos from './components/Cargos';
 import Perfis from './components/Perfis';
+import Usuarios from './components/Usuarios';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -17,9 +18,9 @@ function App() {
 	});
 
 	function menuSelecionado(menu) {
-		setState({ 
+		setState({
 			key: menu.key,
-			breadcrumb: menu.item.props.title 
+			breadcrumb: menu.item.props.title
 		})
 	}
 
@@ -28,8 +29,11 @@ function App() {
 		switch (key) {
 			case "perfis":
 				return <Perfis />
+			case "usuarios":
+				return <Usuarios />
 			default:
 				return <Cargos />
+
 		}
 	}
 
@@ -52,6 +56,10 @@ function App() {
 
 							<Menu.Item key='perfis' title="Perfis">
 								Perfis
+            				</Menu.Item>
+
+							<Menu.Item key='usuarios' title="Usuários">
+								Usuários
             				</Menu.Item>
 
 						</Menu>
