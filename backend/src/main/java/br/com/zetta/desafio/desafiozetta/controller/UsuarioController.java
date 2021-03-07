@@ -10,10 +10,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -64,7 +69,13 @@ public class UsuarioController {
         //seta as propriedades vindo do body do objeto usuario
         usuario.setNome(dto.getNome());
         usuario.setCpf(dto.getCpf());
-        usuario.setData_nascimento(dto.getData_nascimento());
+
+        var loc = new Locale("por");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy",loc);
+        LocalDate ld = LocalDate.parse(dto.getData_nascimento(), formatter);
+        LocalDateTime dateTime = LocalDateTime.of(ld, LocalTime.of(0,0));
+        usuario.setData_nascimento(dateTime);
+
         usuario.setSexo(dto.getSexo());
         usuario.setData_cadastro(LocalDateTime.now());
 

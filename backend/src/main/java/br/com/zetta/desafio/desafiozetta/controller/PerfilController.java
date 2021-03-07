@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import br.com.zetta.desafio.desafiozetta.repository.PerfilRepository;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/perfil")
 public class PerfilController {

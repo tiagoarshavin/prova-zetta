@@ -6,14 +6,17 @@ public class PerfilDTO {
     private Long id;
     private Long key;
     private String nome;
+    private boolean remover;
 
-    public static PerfilDTO Converter(Perfil p){
+    public static PerfilDTO Converter(Perfil p) {
         var dto = new PerfilDTO();
 
         dto.setId(p.getId());
         dto.setKey(p.getId());
 
         dto.setNome(p.getNome());
+
+        dto.setRemover(true);
 
         return dto;
     }
@@ -40,5 +43,13 @@ public class PerfilDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public boolean isRemover() {
+        return remover;
+    }
+
+    public void setRemover(boolean remover) {
+        this.remover = remover;
     }
 }
